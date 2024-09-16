@@ -4,6 +4,7 @@ const Encore = require('@symfony/webpack-encore');
 const syliusBundles = path.resolve(__dirname, 'vendor/sylius/sylius/src/Sylius/Bundle/');
 const uiBundleScripts = path.resolve(syliusBundles, 'UiBundle/Resources/private/js/');
 const uiBundleResources = path.resolve(syliusBundles, 'UiBundle/Resources/private/');
+const [ bitbagCmsShop, bitbagCmsAdmin ] = require('./vendor/bitbag/cms-plugin/webpack.config.js');
 
 // Shop config
 Encore
@@ -86,4 +87,4 @@ appAdminConfig.resolve.alias['sylius/bundle'] = syliusBundles;
 appAdminConfig.externals = Object.assign({}, appAdminConfig.externals, { window: 'window', document: 'document' });
 appAdminConfig.name = 'app.admin';
 
-module.exports = [shopConfig, adminConfig, appShopConfig, appAdminConfig];
+module.exports = [shopConfig, adminConfig, appShopConfig, appAdminConfig, bitbagCmsShop, bitbagCmsAdmin];
